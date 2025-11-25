@@ -1,0 +1,18 @@
+<style>
+  /* Define the SVG Crosshair Cursor */
+  :root {
+    --cursor-crosshair: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="16" y1="4" x2="16" y2="28" stroke="black" stroke-width="1.5"/><line x1="4" y1="16" x2="28" y2="16" stroke="black" stroke-width="1.5"/></svg>') 16 16, auto;
+    
+    --cursor-pointer: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="16" y1="4" x2="16" y2="28" stroke="black" stroke-width="2.5"/><line x1="4" y1="16" x2="28" y2="16" stroke="black" stroke-width="2.5"/></svg>') 16 16, pointer;
+  }
+
+  /* Apply to everything */
+  body, a, button, input, textarea, select, .yeezy-btn {
+    cursor: var(--cursor-crosshair) !important;
+  }
+
+  /* Hover states for interactive elements */
+  a:hover, button:hover, .yeezy-btn:hover, input:hover, select:hover, summary:hover {
+    cursor: var(--cursor-pointer) !important;
+  }
+</style>

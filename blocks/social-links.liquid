@@ -1,0 +1,73 @@
+<div
+  class="social-icons__wrapper footer-utilities__icons"
+  {{ block.shopify_attributes }}
+>
+  {% assign instagram_url = block.settings.instagram_url %}
+
+  {% if instagram_url != blank %}
+    <div class="social-icons__icon-wrapper">
+      <a
+        href="{{ instagram_url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <svg
+          class="social-icons__icon"
+          aria-hidden="true"
+          focusable="false"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          {%- render 'icon', icon: 'instagram' -%}
+        </svg>
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .social-icons__wrapper {
+    display: flex;
+    justify-content: center;
+    gap: var(--gap-sm);
+  }
+
+  .social-icons__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--icon-size-lg);
+  }
+
+  .social-icons__icon {
+    fill: currentColor;
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .social-icons__icon:hover {
+    transform: scale(1.1);
+    color: #e1306c; /* Instagram pink */
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Instagram Link",
+  "settings": [
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Link",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}

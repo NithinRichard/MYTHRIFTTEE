@@ -1,0 +1,74 @@
+<div class="yeezy-column-control">
+  <button id="yeezy-col-minus" class="yeezy-btn">-</button>
+  <span class="yeezy-col-label">GRID <span id="yeezy-col-count">4</span></span>
+  <button id="yeezy-col-plus" class="yeezy-btn">+</button>
+</div>
+
+<style>
+  .yeezy-column-control {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 5px 10px;
+    z-index: 9999;
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .yeezy-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    font-family: inherit;
+  }
+
+  .yeezy-btn:hover {
+    opacity: 0.5;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('.product-grid');
+    const countLabel = document.getElementById('yeezy-col-count');
+    if (!grid) return;
+
+    let currentCols = 4;
+    const minCols = 2;
+    const maxCols = 9;
+
+    function updateGrid(cols) {
+      // Override the desktop columns variable
+      grid.style.setProperty('--product-grid-columns-desktop', `repeat(${cols}, 1fr)`);
+      
+      // Also force grid-template-columns directly just in case
+      grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+      
+      if (countLabel) countLabel.textContent = cols;
+      currentCols = cols;
+    }
+
+    document.getElementById('yeezy-col-plus').addEventListener('click', () => {
+      if (currentCols < maxCols) {
+        updateGrid(currentCols + 1);
+      }
+    });
+
+    document.getElementById('yeezy-col-minus').addEventListener('click', () => {
+      if (currentCols > minCols) {
+        updateGrid(currentCols - 1);
+      }
+    });
+
+    // Initialize
+    updateGrid(currentCols);
+  });
+</script>

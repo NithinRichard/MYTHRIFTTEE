@@ -1,0 +1,134 @@
+{% include 'shogun-content-handler' %}
+<!doctype html>
+<html
+  class="no-js{% if request.design_mode %} shopify-design-mode{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+>
+  <head>
+    <meta name="google-site-verification" content="Gy4oVOe0d5qtxEufCONtbohco9O1uVdqAGwd6xMYQuM" />
+ {%- render 'ecom_header' -%}
+    {% comment %} <meta name="google-site-verification" content="JDs4YPZT4ctKMs1KkPw7Q1qRlAsuMt0LToJ4abKLu3U" /> {% endcomment %}
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
+
+    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
+    <link
+      rel="expect"
+      href="#MainContent"
+      blocking="render"
+      id="view-transition-render-blocker"
+    >
+
+    {%- render 'meta-tags' -%}
+    {%- render 'stylesheets' -%}
+    {%- render 'fonts' -%}
+    {%- render 'scripts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-schemes' -%}
+
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
+
+    {{ content_for_header }}
+  
+  {% render 'shogun-head' %}
+  <meta name="google-site-verification" content="Gy4oVOe0d5qtxEufCONtbohco9O1uVdqAGwd6xMYQuM" />
+  {% comment %} <meta name="google-site-verification" content="JDs4YPZT4ctKMs1KkPw7Q1qRlAsuMt0LToJ4abKLu3U" /> {% endcomment %}
+</head>
+
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+    <div id="header-group">
+      {% sections 'header-group' %}
+    </div>
+
+    <script
+      src="{{ 'critical.js' | asset_url }}"
+      type="module"
+      async
+      blocking="render"
+    ></script>
+
+    <main
+      id="MainContent"
+      class="content-for-layout"
+      role="main"
+      data-page-transition-enabled="{{ settings.page_transition_enabled }}"
+      data-product-transition="{{ settings.transition_to_main_product }}"
+      data-template="{{ template }}"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {% render 'search-modal' %}
+
+    {% if settings.quick_add or settings.mobile_quick_add %}
+      {% render 'quick-add-modal' %}
+    {% endif %}
+  {%- render "ecom_footer"-%}
+  {% render 'yeezy-cursor' %}
+  {% render 'lenis-scroll' %}
+
+  <div id="page-transition-overlay"></div>
+  <style>
+    #page-transition-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+    }
+    body.is-transitioning #page-transition-overlay {
+      opacity: 1;
+      pointer-events: all;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ensure overlay is removed on load
+      document.body.classList.remove('is-transitioning');
+
+      // Handle link clicks
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+        
+        const href = link.getAttribute('href');
+        const target = link.getAttribute('target');
+        
+        // Ignore external links, anchors, or new tabs
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || target === '_blank') return;
+        
+        // Check if it's a local link
+        const url = new URL(link.href);
+        if (url.origin !== window.location.origin) return;
+
+        e.preventDefault();
+        document.body.classList.add('is-transitioning');
+        
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      });
+
+      // Handle back/forward navigation
+      window.addEventListener('pageshow', (event) => {
+        document.body.classList.remove('is-transitioning');
+      });
+    });
+  </script>
+</body>
+</html>
