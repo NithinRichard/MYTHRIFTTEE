@@ -77,58 +77,6 @@
   {% render 'yeezy-cursor' %}
   {% render 'lenis-scroll' %}
 
-  <div id="page-transition-overlay"></div>
-  <style>
-    #page-transition-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #000;
-      z-index: 9999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease-in-out;
-    }
-    body.is-transitioning #page-transition-overlay {
-      opacity: 1;
-      pointer-events: all;
-    }
-  </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Ensure overlay is removed on load
-      document.body.classList.remove('is-transitioning');
 
-      // Handle link clicks
-      document.addEventListener('click', (e) => {
-        const link = e.target.closest('a');
-        if (!link) return;
-        
-        const href = link.getAttribute('href');
-        const target = link.getAttribute('target');
-        
-        // Ignore external links, anchors, or new tabs
-        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || target === '_blank') return;
-        
-        // Check if it's a local link
-        const url = new URL(link.href);
-        if (url.origin !== window.location.origin) return;
-
-        e.preventDefault();
-        document.body.classList.add('is-transitioning');
-        
-        setTimeout(() => {
-          window.location.href = href;
-        }, 300);
-      });
-
-      // Handle back/forward navigation
-      window.addEventListener('pageshow', (event) => {
-        document.body.classList.remove('is-transitioning');
-      });
-    });
-  </script>
 </body>
 </html>

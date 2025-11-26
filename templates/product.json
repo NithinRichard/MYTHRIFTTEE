@@ -68,9 +68,8 @@
           },
           "blocks": {
             "heading_m7KmQQ": {
-              "type": "text",
+              "type": "product-title",
               "settings": {
-                "text": "<h1>{{ closest.product.title }}</h1>",
                 "type_preset": "h2",
                 "alignment": "left"
               }

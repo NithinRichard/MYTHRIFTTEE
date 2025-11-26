@@ -686,9 +686,25 @@
     aspect-ratio: var(--ratio);
   }
 
-  .dialog-zoomed-gallery .product-media-container--model .product-media__image {
+    .dialog-zoomed-gallery .product-media-container--model .product-media__image {
     /* Make the height match the height of the model-viewer */
     height: 100vh;
+  }
+
+  /* Smooth Transitions & Image Fit */
+  .product-media img {
+    object-fit: cover !important;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+
+  .product-media-container {
+    overflow: hidden;
+  }
+
+  .product-media-container:hover img {
+    transform: scale(1.02);
   }
 {% endstylesheet %}
 
