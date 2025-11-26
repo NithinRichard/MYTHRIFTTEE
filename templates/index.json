@@ -69,47 +69,6 @@
         "padding-block-end": 0
       }
     },
-    "marquee_KqcVmm": {
-      "type": "marquee",
-      "blocks": {
-        "text_WqRiLC": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>New drops every week. Limited stock—don’t miss out!</strong></p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "balance",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_WqRiLC"
-      ],
-      "name": "t:names.marquee_section",
-      "settings": {
-        "movement_direction": "normal",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 24,
-        "padding-block-end": 24,
-        "gap_between_elements": 24
-      }
-    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -678,7 +637,6 @@
   "order": [
     "17620804999b15ee75",
     "176208031969ab874a",
-    "marquee_KqcVmm",
     "product_list_fa6P9H",
     "176250539679ea7412",
     "17625051184a5dc6bf",
