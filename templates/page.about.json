@@ -1,0 +1,143 @@
+{
+    "sections": {
+        "main": {
+            "type": "main-page",
+            "blocks": {
+                "title": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<h1>ABOUT THRIFTTEE</h1>",
+                        "width": "100%",
+                        "max_width": "narrow",
+                        "alignment": "center",
+                        "type_preset": "h1",
+                        "font": "var(--font-body--family)",
+                        "font_size": "2rem",
+                        "line_height": "normal",
+                        "letter_spacing": "0.1em",
+                        "case": "uppercase",
+                        "wrap": "pretty",
+                        "padding-block-start": 0,
+                        "padding-block-end": 16
+                    }
+                },
+                "subtitle": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>Curated vintage & streetwear for the conscious collector</p>",
+                        "width": "100%",
+                        "max_width": "narrow",
+                        "alignment": "center",
+                        "type_preset": "h4",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "opacity": 0.8,
+                        "padding-block-end": 60
+                    }
+                },
+                "story_heading": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<h2>OUR STORY</h2>",
+                        "width": "100%",
+                        "max_width": "narrow",
+                        "alignment": "center",
+                        "type_preset": "h3",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1.5rem",
+                        "letter_spacing": "0.1em",
+                        "case": "uppercase",
+                        "padding-block-end": 24
+                    }
+                },
+                "story_text": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>ThriftTee was born from a passion for sustainable fashion and unique finds. We believe that every piece of clothing has a story, and we're here to help you discover yours.</p><p>Our carefully curated collection features vintage treasures and contemporary streetwear, each item handpicked for its quality, style, and character. We're committed to reducing fashion waste while helping you express your individuality.</p>",
+                        "width": "100%",
+                        "max_width": "narrow",
+                        "alignment": "center",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "1.8",
+                        "padding-block-end": 60
+                    }
+                },
+                "values_heading": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<h2>OUR VALUES</h2>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "center",
+                        "type_preset": "h3",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1.5rem",
+                        "letter_spacing": "0.1em",
+                        "case": "uppercase",
+                        "padding-block-end": 48
+                    }
+                },
+                "value_1": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<h3>SUSTAINABILITY</h3><p>Every purchase extends the life of a garment and reduces fashion waste.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "center",
+                        "type_preset": "rte",
+                        "font_size": "0.875rem",
+                        "line_height": "1.6",
+                        "padding-block-end": 32
+                    }
+                },
+                "value_2": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<h3>QUALITY</h3><p>We handpick each item for its craftsmanship and lasting appeal.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "center",
+                        "type_preset": "rte",
+                        "font_size": "0.875rem",
+                        "line_height": "1.6",
+                        "padding-block-end": 32
+                    }
+                },
+                "value_3": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<h3>INDIVIDUALITY</h3><p>Express yourself with pieces that stand out from the crowd.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "center",
+                        "type_preset": "rte",
+                        "font_size": "0.875rem",
+                        "line_height": "1.6"
+                    }
+                }
+            },
+            "block_order": [
+                "title",
+                "subtitle",
+                "story_heading",
+                "story_text",
+                "values_heading",
+                "value_1",
+                "value_2",
+                "value_3"
+            ],
+            "settings": {
+                "content_direction": "column",
+                "gap": 0,
+                "color_scheme": "",
+                "padding-block-start": 80,
+                "padding-block-end": 80
+            }
+        }
+    },
+    "order": [
+        "main"
+    ]
+}

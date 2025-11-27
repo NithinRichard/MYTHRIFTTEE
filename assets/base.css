@@ -4292,37 +4292,6 @@ text-component {
   }
 }
 
-/* Glitch Hover Effect */
-@keyframes glitch-anim {
-  0% {
-    transform: translate(0);
-  }
-
-  20% {
-    transform: translate(-2px, 2px);
-  }
-
-  40% {
-    transform: translate(-2px, -2px);
-  }
-
-  60% {
-    transform: translate(2px, 2px);
-  }
-
-  80% {
-    transform: translate(2px, -2px);
-  }
-
-  100% {
-    transform: translate(0);
-  }
-}
-
-.product-card:hover img {
-  animation: glitch-anim 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
-}
-
 /* Masonry Grid Layout */
 .product-grid--masonry {
   display: block !important;
@@ -4478,4 +4447,400 @@ body::after {
 
 .product-card--minimal .price {
   font-size: 0.75rem !important;
+}
+
+/* Zara-Inspired Minimalist Header */
+.header {
+  background: transparent !important;
+}
+
+.header__row {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Larger, more prominent logo */
+.header-logo {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+/* Minimalist menu styling */
+.header__column--center header-menu,
+.header__column--left header-menu,
+.header__column--right header-menu {
+  font-size: 0.875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.menu-list__link {
+  font-weight: 400 !important;
+  transition: opacity 0.2s ease;
+}
+
+.menu-list__link:hover {
+  opacity: 0.6;
+}
+
+/* Clean, minimal icons */
+.header-actions__action {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.header-actions__action:hover {
+  opacity: 1;
+}
+
+/* Remove unnecessary visual clutter */
+.header__row {
+  box-shadow: none !important;
+}
+
+/* Zara-Inspired Minimalist Footer */
+.footer-content {
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  padding-top: 48px !important;
+}
+
+/* Footer typography - clean and minimal */
+.footer-content h2,
+.footer-content h3,
+.footer-content h4 {
+  font-size: 0.875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-weight: 400 !important;
+  margin-bottom: 12px;
+}
+
+.footer-content p,
+.footer-content a {
+  font-size: 0.75rem !important;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.footer-content a:hover {
+  opacity: 1;
+}
+
+/* Email signup - minimal styling */
+.footer-content input[type="email"] {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 0 !important;
+  padding: 12px 16px !important;
+  font-size: 0.875rem !important;
+  background: transparent !important;
+}
+
+.footer-content button[type="submit"] {
+  background: #000 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  transition: opacity 0.2s ease;
+}
+
+.footer-content button[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+/* Footer utilities - copyright and links */
+.section-wrapper footer {
+  background: transparent !important;
+}
+
+footer .section {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+footer a:hover {
+  opacity: 0.6;
+}
+
+/* Social links - minimal */
+.social-links a {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.social-links a:hover {
+  opacity: 1;
+}
+
+/* Mobile Optimizations for Zara Design */
+@media (max-width: 768px) {
+
+  /* Hero Section - Mobile */
+  .hero__content-wrapper h1,
+  .hero__content-wrapper h2,
+  .hero__content-wrapper h3,
+  .hero__content-wrapper h4 {
+    font-size: 1rem !important;
+  }
+
+  .hero__content-wrapper p {
+    font-size: 0.7rem !important;
+  }
+
+  .hero__content-wrapper .button {
+    font-size: 0.7rem !important;
+    padding: 0.6rem 1.2rem !important;
+  }
+
+  /* Header - Mobile */
+  .header-logo {
+    font-size: 1.2rem !important;
+  }
+
+  .header__row {
+    padding: 12px 16px !important;
+  }
+
+  /* Masonry Grid - Single column on mobile */
+  .masonry-product__grid {
+    column-count: 1 !important;
+  }
+
+  /* Product Cards - Adjust for mobile */
+  .product-card--minimal .product-card__info {
+    opacity: 1 !important;
+    /* Always show on mobile */
+    position: relative !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    margin-top: 8px;
+  }
+
+  .product-card--minimal .product-card__title {
+    font-size: 0.8rem !important;
+  }
+
+  .product-card--minimal .price {
+    font-size: 0.7rem !important;
+  }
+
+  /* Footer - Mobile */
+  .footer-content h2,
+  .footer-content h3,
+  .footer-content h4 {
+    font-size: 0.8rem !important;
+  }
+
+  .footer-content p,
+  .footer-content a {
+    font-size: 0.7rem !important;
+  }
+
+  .footer-content input[type="email"] {
+    padding: 10px 12px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .footer-content button[type="submit"] {
+    padding: 10px 20px !important;
+    font-size: 0.7rem !important;
+  }
+
+  /* Reduce spacing on mobile */
+  .footer-content {
+    padding-top: 32px !important;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+
+  .hero__content-wrapper h1,
+  .hero__content-wrapper h2,
+  .hero__content-wrapper h3,
+  .hero__content-wrapper h4 {
+    font-size: 0.9rem !important;
+  }
+
+  .hero__content-wrapper p {
+    font-size: 0.65rem !important;
+  }
+
+  .header-logo {
+    font-size: 1rem !important;
+  }
+}
+
+/* Premium Micro-Animations */
+
+/* Fade-in on scroll animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Image reveal animation */
+@keyframes imageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animations to elements */
+.hero__content-wrapper {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero__media-wrapper {
+  animation: imageReveal 1.2s ease-out;
+}
+
+/* Product cards stagger animation */
+.masonry-product__item {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.masonry-product__item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.masonry-product__item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.masonry-product__item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.masonry-product__item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.masonry-product__item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.masonry-product__item:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Product card image hover effect */
+.product-card--minimal .product-card__image-wrapper img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-card--minimal:hover .product-card__image-wrapper img {
+  transform: scale(1.05);
+}
+
+/* Header fade in */
+.header {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Footer fade in */
+.footer-content {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Button hover animation */
+.hero__content-wrapper .button {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero__content-wrapper .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Menu items subtle animation */
+.menu-list__link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.menu-list__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.menu-list__link:hover::after {
+  width: 100%;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* About Page Styling */
+.template-page .section h2,
+.template-page .section h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+.template-page .section h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.template-page .section p {
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+/* About page animations */
+.template-page .section {
+  animation: fadeInUp 0.8s ease-out;
 }
