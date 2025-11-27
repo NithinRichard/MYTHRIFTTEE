@@ -1,0 +1,34 @@
+{%- doc -%}
+  Renders a grid and places items inside of it using a masonry layout.
+
+  @param {object} items - An array of HTML strings for the product list items
+
+  @example
+  {% render 'masonry-product-grid', items: items %}
+{%- enddoc -%}
+
+<div class="masonry-product__grid">
+  {% for item in items %}
+    <div class="masonry-product__item">
+      {{ item }}
+    </div>
+  {% endfor %}
+</div>
+
+{% stylesheet %}
+  .masonry-product__grid {
+    column-count: 2;
+    column-gap: var(--gap-lg);
+  }
+
+  .masonry-product__item {
+    break-inside: avoid;
+    margin-bottom: var(--gap-lg);
+  }
+
+  @media (max-width: 768px) {
+    .masonry-product__grid {
+      column-count: 1;
+    }
+  }
+{% endstylesheet %}

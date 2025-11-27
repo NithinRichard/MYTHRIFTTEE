@@ -136,6 +136,9 @@
         {% else %}
           {% render 'editorial-collection-grid', items: list_items_array %}
       {% endcase %}
+
+    {% when 'masonry' %}
+      {% render 'masonry-product-grid', items: list_items_array %}
   {% endcase %}
 </div>
 

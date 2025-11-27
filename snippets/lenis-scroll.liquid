@@ -25,12 +25,12 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 2.0, // Increased for weightier feel
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: 'vertical',
       gestureDirection: 'vertical',
       smooth: true,
-      mouseMultiplier: 1,
+      mouseMultiplier: 0.8, // Reduced for weightier feel
       smoothTouch: false,
       touchMultiplier: 2,
     });
@@ -42,7 +42,28 @@
 
     requestAnimationFrame(raf);
 
-    // Integrate with Shopify's scroll handling if needed
+    // Parallax Effect
+    lenis.on('scroll', () => {
+      const parallaxElements = document.querySelectorAll('[data-parallax]');
+      parallaxElements.forEach(el => {
+        const speed = parseFloat(el.dataset.speed) || 0.5;
+        const rect = el.getBoundingClientRect();
+        const parentRect = el.parentElement.getBoundingClientRect();
+        
+        // Only animate if in view (with some buffer)
+        if (parentRect.top < window.innerHeight && parentRect.bottom > 0) {
+           // Calculate position relative to viewport center or top
+           // Using -parentRect.top * speed means:
+           // When section is at top of screen, transform is 0.
+           // When section moves up (scrolled down), parentRect.top becomes negative.
+           // -(-100) * 0.5 = 50. Element moves DOWN relative to parent.
+           // This creates the parallax effect (background moves slower than foreground).
+           const y = -parentRect.top * speed;
+           el.style.transform = `translateY(${y}px)`;
+        }
+      });
+    });
+
     window.lenis = lenis;
   });
 </script>

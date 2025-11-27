@@ -1,14 +1,42 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
+    "hero_banner": {
+      "type": "hero",
+      "blocks": {
+        "subheading": {
+          "type": "text",
+          "settings": {
+            "text": "<p>CURATED VINTAGE & STREETWEAR</p>",
+            "type_preset": "h4",
+            "max_width": "narrow"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "SHOP DROP",
+            "link": "shopify://collections/all",
+            "style_class": "button"
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "button"
+      ],
+      "settings": {
+        "section_height": "large",
+        "color_scheme": "scheme-1",
+        "enable_parallax": true,
+        "parallax_speed": 0.5,
+        "toggle_overlay": true,
+        "overlay_style": "solid",
+        "overlay_color": "#00000026",
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16
+      }
+    },
     "17620804999b15ee75": {
       "type": "_blocks",
       "settings": {
@@ -238,66 +266,6 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "176250539679ea7412": {
-      "type": "_blocks",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "17625051184a5dc6bf": {
-      "type": "_blocks",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
       }
     },
     "section_MW79Nm": {
@@ -631,15 +599,45 @@
         "gradient_direction": "to top",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
+      },
+      "blocks": {
+        "text_wbrTeW": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>We ship exclusively within India, using trusted courier services. You will get tracking information upon dispatch.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_wbrTeW"
+      ]
     }
   },
   "order": [
+    "hero_banner",
     "17620804999b15ee75",
     "176208031969ab874a",
     "product_list_fa6P9H",
-    "176250539679ea7412",
-    "17625051184a5dc6bf",
     "section_MW79Nm",
     "1761643241f92dbed6",
     "176180697594962b64"
