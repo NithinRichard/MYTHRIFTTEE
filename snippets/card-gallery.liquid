@@ -109,6 +109,7 @@
   data-image-ratio="{{ block_settings.image_ratio }}"
   {{ block.shopify_attributes }}
 >
+
   {%- if all_media.size > 0 -%}
     {% liquid
       # Check if there are generic media that are not variant images
@@ -154,7 +155,7 @@
               endunless
             elsif has_applied_colour_filter
               # with colour filters, hide all variant images unless the image is the selected_variant
-              unless media.src == selected_variant_image
+              unless media.src == selected_variant_image or selected_variant_image == blank
                 assign hidden = true
               endunless
             elsif forloop.first == false
@@ -189,7 +190,7 @@
             render 'product-media', media: media, sizes: sizes, loading: loading, preview_image_only: true
           endcapture
 
-          render 'slideshow-slide', slide_id: media.id, index: forloop.index, hidden: hidden, class: class, attributes: attributes, children: slideshow_children, media_fit: media_fit
+          render 'slideshow-slide', slide_id: media.id, index: forloop.index0, hidden: hidden, class: class, attributes: attributes, children: slideshow_children, media_fit: media_fit
         endfor
       endcapture
 
