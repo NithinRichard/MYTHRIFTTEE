@@ -20,7 +20,7 @@
   ],
   "blocks": [
     {
-      "type": "product_item",
+      "type": "complete_look_item",
       "name": "Product",
       "settings": [
         {
@@ -45,18 +45,44 @@
   {% endif %}
 
   <div class="complete-the-look-grid">
-    {%- if section.blocks.size > 0 -%}
-      {%- for block in section.blocks -%}
-        {%- if block.settings.product != blank -%}
+    {%- if recommendations.performed -%}
+      {%- if recommendations.products_count > 0 -%}
+        {%- for product in recommendations.products -%}
           <div class="complete-the-look-item">
-            {% render 'product-card', product_card_product: block.settings.product %}
+            <a href="{{ product.url }}" class="complete-the-look-link">
+              <div class="complete-the-look-image-wrapper">
+                {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'complete-the-look-image' }}
+              </div>
+              <div class="complete-the-look-info">
+                <h3 class="complete-the-look-title">{{ product.title }}</h3>
+                <span class="complete-the-look-price">{{ product.price | money }}</span>
+              </div>
+            </a>
           </div>
-        {%- endif -%}
-      {%- endfor -%}
+        {%- endfor -%}
+      {%- endif -%}
     {%- else -%}
-      <div id="complete-the-look-recommendations" data-product-id="{{ product.id }}" data-limit="{{ section.settings.products_to_show }}">
-        <!-- Recommendations will be loaded here via JS -->
-      </div>
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.settings.product != blank -%}
+            <div class="complete-the-look-item">
+              <a href="{{ block.settings.product.url }}" class="complete-the-look-link">
+                <div class="complete-the-look-image-wrapper">
+                  {{ block.settings.product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'complete-the-look-image' }}
+                </div>
+                <div class="complete-the-look-info">
+                  <h3 class="complete-the-look-title">{{ block.settings.product.title }}</h3>
+                  <span class="complete-the-look-price">{{ block.settings.product.price | money }}</span>
+                </div>
+              </a>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        <div id="complete-the-look-recommendations" data-product-id="{{ product.id }}" data-limit="{{ section.settings.products_to_show }}">
+          <!-- Recommendations will be loaded here via JS -->
+        </div>
+      {%- endif -%}
     {%- endif -%}
   </div>
 </div>
@@ -76,13 +102,54 @@
 
   .complete-the-look-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 columns */
     gap: 1rem;
   }
 
-  /* Reuse existing product card styles but ensure they fit */
-  .complete-the-look-item .card {
+  @media screen and (min-width: 750px) {
+    .complete-the-look-grid {
+      grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns fixed to prevent stretching */
+      gap: 1.5rem;
+    }
+  }
+
+  .complete-the-look-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .complete-the-look-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background-color: #f4f4f4;
+  }
+
+  .complete-the-look-image {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .complete-the-look-link:hover .complete-the-look-image {
+    transform: scale(1.05);
+  }
+
+  .complete-the-look-title {
+    font-family: 'Yeezy TStar', sans-serif;
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+  }
+
+  .complete-the-look-price {
+    font-family: 'VCR OSD Mono', monospace;
+    font-size: 0.9rem;
+    opacity: 0.8;
   }
 </style>
 
