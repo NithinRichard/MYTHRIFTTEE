@@ -298,7 +298,7 @@
       "name": "Featured collection",
       "settings": {
         "collection": "all",
-        "layout_type": "masonry",
+        "layout_type": "carousel",
         "carousel_on_mobile": false,
         "max_products": 3,
         "columns": 4,
@@ -306,7 +306,7 @@
         "mobile_card_size": "60cqw",
         "columns_gap": 0,
         "rows_gap": 0,
-        "icons_style": "chevron",
+        "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
