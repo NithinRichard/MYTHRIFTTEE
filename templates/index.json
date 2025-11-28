@@ -316,6 +316,25 @@
         "padding-block-end": 48
       }
     },
+    "complete_the_look_pkqPk3": {
+      "type": "complete-the-look",
+      "blocks": {
+        "product_item_GpwgVB": {
+          "type": "product_item",
+          "settings": {
+            "product": "thc-01"
+          }
+        }
+      },
+      "block_order": [
+        "product_item_GpwgVB"
+      ],
+      "name": "Complete the Look",
+      "settings": {
+        "heading": "COMPLETE THE LOOK",
+        "products_to_show": 3
+      }
+    },
     "section_MW79Nm": {
       "type": "section",
       "blocks": {
@@ -680,14 +699,6 @@
         "gradient_direction": "to top",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "complete_the_look_pkqPk3": {
-      "type": "complete-the-look",
-      "name": "Complete the Look",
-      "settings": {
-        "heading": "COMPLETE THE LOOK",
-        "products_to_show": 3
       }
     }
   },
