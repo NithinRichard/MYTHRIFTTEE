@@ -126,12 +126,13 @@
     overflow: hidden;
     margin-bottom: 1rem;
     background-color: #f4f4f4;
+    padding: 1rem; /* Add padding so image is "inside" */
   }
 
   .complete-the-look-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Ensure whole image is visible */
     transition: transform 0.5s ease;
   }
 
