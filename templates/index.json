@@ -319,6 +319,12 @@
     "complete_the_look_pkqPk3": {
       "type": "complete-the-look",
       "blocks": {
+        "product_item_KyCaAA": {
+          "type": "product_item",
+          "settings": {
+            "product": "thc-02"
+          }
+        },
         "product_item_GpwgVB": {
           "type": "product_item",
           "settings": {
@@ -327,6 +333,7 @@
         }
       },
       "block_order": [
+        "product_item_KyCaAA",
         "product_item_GpwgVB"
       ],
       "name": "Complete the Look",
