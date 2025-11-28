@@ -120,13 +120,18 @@
         role="list"
         data-last-page="{{ paginate.pages }}"
         data-product-card-size="{{ section.settings.product_card_size }}"
+        {% if paginate.next %}data-next-url="{{ paginate.next.url }}"{% endif %}
       >
         {{ children }}
       </ul>
+      <div id="infinite-scroll-loading" class="loading-spinner hidden">
+        <div class="spinner"></div>
+      </div>
       <span ref="viewMoreNext"></span>
     {% endif %}
   </div>
 </div>
+<script src="{{ 'infinite-scroll.js' | asset_url }}" defer="defer"></script>
 
 {% comment %}
   This script is used to set the grid view on the product grid stored in sessionStorage. Keeping it here helps us prevent seeing the default state.

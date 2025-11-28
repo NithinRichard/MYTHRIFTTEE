@@ -4116,6 +4116,214 @@ accordion-custom {
   }
 }
 
+/* Lookbook Section */
+.lookbook-section {
+  padding-top: var(--section-padding-top, 36px);
+  padding-bottom: var(--section-padding-bottom, 36px);
+}
+
+.lookbook-grid {
+  column-count: 2;
+  column-gap: 1rem;
+}
+
+@media screen and (min-width: 750px) {
+  .lookbook-grid {
+    column-count: 3;
+    column-gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .lookbook-grid {
+    column-count: 4;
+  }
+}
+
+.lookbook-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+@media screen and (min-width: 750px) {
+  .lookbook-item {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.lookbook-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.lookbook-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--hover-transition-duration) var(--hover-transition-timing);
+}
+
+.lookbook-card:hover .lookbook-media img {
+  transform: scale(1.05);
+}
+
+.lookbook-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 1rem;
+}
+
+.lookbook-card:hover .lookbook-overlay {
+  opacity: 1;
+}
+
+.lookbook-link {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lookbook-text {
+  font-family: 'VCR OSD Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 2px solid white;
+  padding-bottom: 0.2rem;
+}
+
+.lookbook-product-title {
+  font-family: 'Yeezy TStar', sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+
+/* Video Background Section */
+.video-background-section {
+  padding: 0;
+}
+
+.video-background-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* Default to full screen */
+  overflow: hidden;
+}
+
+.video-background-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.video-background-placeholder {
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-background-placeholder svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.video-background-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  /* Dark overlay for text readability */
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-background-content {
+  color: #fff;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.video-background-heading {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-family: 'VCR OSD Mono', monospace;
+  text-transform: uppercase;
+}
+
+.video-background-subheading {
+  color: #fff;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  font-family: 'Yeezy TStar', sans-serif;
+}
+
+.video-background-content .button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  font-family: 'VCR OSD Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Infinite Scroll Spinner */
+.loading-spinner {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #000;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 accordion-custom[data-disable-on-mobile='true'] summary {
   @media screen and (max-width: 749px) {
     cursor: auto;
