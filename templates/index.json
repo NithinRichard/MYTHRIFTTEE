@@ -316,26 +316,34 @@
         "padding-block-end": 48
       }
     },
-    "complete_the_look_pkqPk3": {
+    "complete_the_look_HaFptx": {
       "type": "complete-the-look",
       "blocks": {
-        "product_item_KyCaAA": {
-          "type": "product_item",
+        "complete_look_item_JTVrJc": {
+          "type": "complete_look_item",
           "settings": {
             "product": "thc-02"
           }
         },
-        "product_item_GpwgVB": {
-          "type": "product_item",
+        "complete_look_item_nPkgcA": {
+          "type": "complete_look_item",
           "settings": {
             "product": "thc-01"
           }
         }
       },
       "block_order": [
-        "product_item_KyCaAA",
-        "product_item_GpwgVB"
+        "complete_look_item_JTVrJc",
+        "complete_look_item_nPkgcA"
       ],
+      "name": "Complete the Look",
+      "settings": {
+        "heading": "COMPLETE THE LOOK",
+        "products_to_show": 3
+      }
+    },
+    "complete_the_look_pkqPk3": {
+      "type": "complete-the-look",
       "name": "Complete the Look",
       "settings": {
         "heading": "COMPLETE THE LOOK",
@@ -714,6 +722,7 @@
     "17620804999b15ee75",
     "176208031969ab874a",
     "product_list_fa6P9H",
+    "complete_the_look_HaFptx",
     "complete_the_look_pkqPk3",
     "section_MW79Nm",
     "1761643241f92dbed6",
