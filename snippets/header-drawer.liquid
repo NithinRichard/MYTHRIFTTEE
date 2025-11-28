@@ -651,11 +651,7 @@
     position: initial;
   }
 
-  @media screen and (min-width: 750px) {
-    .header--desktop header-menu + .header__drawer header-drawer {
-      display: none;
-    }
-  }
+
 
   .menu-drawer-container .header__icon--summary {
     color: var(--color-foreground);
@@ -698,17 +694,13 @@
   }
 
   details[open] .header__icon--menu .header-drawer-icon--close {
-    @media screen and (min-width: 750px) {
-      display: none;
-    }
+
   }
 
   details[open] .header__icon--menu .header-drawer-icon--open {
     display: none;
 
-    @media screen and (min-width: 750px) {
-      display: flex;
-    }
+
   }
 
   .menu-drawer {

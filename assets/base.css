@@ -5052,3 +5052,12 @@ html {
 .template-page .section {
   animation: fadeInUp 0.8s ease-out;
 }
+
+/* Sticky Content */
+@media screen and (min-width: 750px) {
+  .sticky-content--desktop {
+    position: sticky;
+    top: var(--sticky-header-offset, 2rem);
+    z-index: 2;
+  }
+}
