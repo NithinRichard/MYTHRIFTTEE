@@ -109,6 +109,10 @@
     data-placeholder="true"
   {% endif %}
 >
+  <div class="product-card__wishlist">
+    {% render 'wishlist-button', product: product %}
+  </div>
+
   <a
     id="{{ product_card_id | md5 }}"
     {% unless onboarding %}
@@ -224,5 +228,12 @@
 
   .product-card [data-available-count='0'] ~ svg {
     display: block;
+  }
+
+  .product-card__wishlist {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
   }
 {% endstylesheet %}

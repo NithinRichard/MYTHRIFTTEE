@@ -1,0 +1,88 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-grid.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width wishlist-page">
+  <h1 class="main-page-title page-title h0">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte">
+    {{ page.content }}
+  </div>
+
+  <div id="wishlist-grid" class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop">
+    <!-- Wishlist items will be populated here via JS -->
+    <p class="wishlist-empty-msg hidden">{{ 'templates.contact.form.error_heading' | t }} Your wishlist is empty.</p>
+    <div class="wishlist-loader">Loading...</div>
+  </div>
+</div>
+
+<script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const wishlistGrid = document.getElementById('wishlist-grid');
+    const loader = wishlistGrid.querySelector('.wishlist-loader');
+    const emptyMsg = wishlistGrid.querySelector('.wishlist-empty-msg');
+    
+    const items = window.wishlist ? window.wishlist.getWishlist() : [];
+
+    if (items.length === 0) {
+      loader.classList.add('hidden');
+      emptyMsg.classList.remove('hidden');
+      emptyMsg.textContent = "Your wishlist is currently empty.";
+      return;
+    }
+
+    // Fetch product cards
+    const fetchProductCard = async (handle) => {
+      try {
+        const response = await fetch(`/products/${handle}?view=card`);
+        if (!response.ok) throw new Error('Product not found');
+        return await response.text();
+      } catch (error) {
+        console.error(`Error fetching product ${handle}:`, error);
+        return null;
+      }
+    };
+
+    const productCards = await Promise.all(items.map(handle => fetchProductCard(handle)));
+    
+    loader.classList.add('hidden');
+    
+    productCards.forEach(html => {
+      if (html) {
+        const div = document.createElement('div');
+        div.classList.add('grid__item');
+        div.innerHTML = html;
+        wishlistGrid.appendChild(div);
+      }
+    });
+
+    // Re-initialize wishlist buttons in the newly added cards
+    if (window.wishlist) {
+      window.wishlist.updateButtons();
+    }
+  });
+</script>
+
+<style>
+  .wishlist-page {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .wishlist-loader {
+    text-align: center;
+    width: 100%;
+    padding: 2rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Wishlist Page",
+  "tag": "section",
+  "class": "section",
+  "settings": []
+}
+{% endschema %}

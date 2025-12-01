@@ -1,0 +1,46 @@
+{% comment %}
+  Renders a wishlist button.
+  Accepts:
+  - product: {Object} Product object.
+  - class: {String} Additional classes.
+{% endcomment %}
+
+<button
+  type="button"
+  class="wishlist-btn {{ class }}"
+  data-product-handle="{{ product.handle }}"
+  aria-label="Add to wishlist"
+  aria-pressed="false"
+>
+  {% render 'icon-heart' %}
+</button>
+
+<style>
+  .wishlist-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    color: currentColor;
+  }
+
+  .wishlist-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .wishlist-btn .icon-heart {
+    width: 20px;
+    height: 20px;
+    fill: transparent;
+    transition: fill 0.3s, stroke 0.3s;
+  }
+
+  .wishlist-btn.active .icon-heart {
+    fill: #ff0000; /* Red fill when active */
+    stroke: #ff0000;
+  }
+</style>
