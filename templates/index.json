@@ -152,7 +152,7 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "VIEW ALLL",
+                "label": "VIEW ALL",
                 "open_in_new_tab": true,
                 "style_class": "link",
                 "width": "fit-content",
