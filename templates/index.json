@@ -126,7 +126,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Featured Products</h2>",
+                "text": "<h2>FEATURED PRODUCTS</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -152,7 +152,7 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "View all",
+                "label": "VIEW ALLL",
                 "open_in_new_tab": true,
                 "style_class": "link",
                 "width": "fit-content",
@@ -280,7 +280,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h3>Frequently asked questions</h3>",
+            "text": "<h3>FREQUENTLY ASKED QUESTIONS</h3>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
