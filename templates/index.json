@@ -256,20 +256,6 @@
         "padding-block-end": 48
       }
     },
-    "video_background_TXFmew": {
-      "type": "video-background",
-      "name": "Video Background",
-      "settings": {
-        "video": "shopify://files/videos/IMG_4163 (online-video-cutter.com).mp4",
-        "heading": "",
-        "heading_size": "h1",
-        "subheading": "",
-        "link_text": "Shop Now",
-        "link": "",
-        "height": 800,
-        "mobile_height": 500
-      }
-    },
     "section_MW79Nm": {
       "type": "section",
       "blocks": {
@@ -640,7 +626,6 @@
   "order": [
     "hero_banner",
     "product_list_fa6P9H",
-    "video_background_TXFmew",
     "section_MW79Nm",
     "1761643241f92dbed6",
     "176180697594962b64"
