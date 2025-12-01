@@ -69,6 +69,14 @@
       padding-block-end: var(--zoom-out-padding-block-end, 0);
     }
   }
+
+  @media screen and (max-width: 749px) {
+    .product-grid--{{ section.id }} {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: var(--grid-mobile-horizontal-spacing, 10px) !important;
+    }
+  }
 {% endstyle %}
 
 <div
