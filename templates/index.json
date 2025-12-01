@@ -260,12 +260,11 @@
       "type": "video",
       "name": "Video",
       "settings": {
-        "heading": "THE STORY",
+        "heading": "STRICTLY BUISINESS",
         "heading_size": "h2",
         "enable_video_looping": true,
         "video": "shopify://files/videos/IMG_4163 (online-video-cutter.com).mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "",
         "full_width": false,
         "color_scheme": "",
         "padding_top": 36,
