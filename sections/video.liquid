@@ -100,7 +100,7 @@
           autoplay: section.settings.enable_video_looping,
           loop: section.settings.enable_video_looping,
           controls: true,
-          muted: false,
+          muted: true,
           playsinline: true,
           class: 'video-section__video',
           id: section.id
@@ -119,14 +119,14 @@
         <!-- External Video (YouTube/Vimeo) -->
         {%- if section.settings.video_url.type == 'youtube' -%}
           <iframe
-            src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?enablejsapi=1&autoplay=0&playsinline=1"
+            src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?enablejsapi=1&autoplay=0&playsinline=1&mute=1"
             class="video-section__video"
             allow="autoplay; encrypted-media"
             allowfullscreen
           ></iframe>
         {%- elsif section.settings.video_url.type == 'vimeo' -%}
           <iframe
-            src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=0&playsinline=1"
+            src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=0&playsinline=1&muted=1"
             class="video-section__video"
             allow="autoplay; encrypted-media"
             allowfullscreen
