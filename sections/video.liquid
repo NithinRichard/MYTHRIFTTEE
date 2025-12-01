@@ -26,6 +26,7 @@
     position: relative;
     width: 100%;
     padding-bottom: 56.25%; /* Default 16:9 aspect ratio */
+    background-color: #000; /* Fallback background */
   }
 
   .video-section__video iframe,
@@ -33,9 +34,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     border: 0;
+    object-fit: cover;
   }
 
   /* Poster Button */
@@ -50,7 +52,7 @@
     padding: 0;
     border: none;
     background-color: transparent;
-    z-index: 1;
+    z-index: 2; /* Higher than video initially */
     transition: opacity 0.3s ease;
   }
 
@@ -86,18 +88,18 @@
     fill: currentColor;
   }
 
-  /* Hide poster when playing - Target the button itself as media.js adds class to it */
+  /* Hide poster when playing */
   .deferred-media__poster-button.deferred-media__playing {
     opacity: 0;
     pointer-events: none;
+    z-index: 0; /* Move behind video */
   }
   
-  /* Ensure video is visible when playing - Target the tag name */
+  /* Ensure video is visible when playing */
   deferred-media[data-media-loaded="true"] iframe,
   deferred-media[data-media-loaded="true"] video {
     display: block;
-    z-index: 2;
-    object-fit: cover;
+    z-index: 1;
   }
 {%- endstyle -%}
 
