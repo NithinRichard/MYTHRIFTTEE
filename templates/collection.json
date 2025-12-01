@@ -120,7 +120,6 @@
               "type": "_product-card-gallery",
               "settings": {
                 "image_ratio": "adapt",
-                "constrain_to_viewport": "",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -129,7 +128,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title_4nY4eT": {
               "type": "product-title",
@@ -169,10 +169,10 @@
         "mobile_product_card_size": "small",
         "product_grid_width": "full-width",
         "full_width_on_mobile": true,
-        "columns_gap_horizontal": 0,
+        "columns_gap_horizontal": 10,
         "columns_gap_vertical": 0,
-        "padding-inline-start": 0,
-        "padding-inline-end": 0,
+        "padding-inline-start": 22,
+        "padding-inline-end": 22,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
         "padding-block-end": 32
