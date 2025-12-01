@@ -51,6 +51,7 @@
     border: none;
     background-color: transparent;
     z-index: 1;
+    transition: opacity 0.3s ease;
   }
 
   .deferred-media__poster-image {
@@ -85,17 +86,18 @@
     fill: currentColor;
   }
 
-  /* Hide poster when playing */
-  .deferred-media__playing .deferred-media__poster-button {
+  /* Hide poster when playing - Target the button itself as media.js adds class to it */
+  .deferred-media__poster-button.deferred-media__playing {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
   }
   
-  /* Ensure video is visible when playing */
-  .deferred-media[data-media-loaded="true"] iframe,
-  .deferred-media[data-media-loaded="true"] video {
+  /* Ensure video is visible when playing - Target the tag name */
+  deferred-media[data-media-loaded="true"] iframe,
+  deferred-media[data-media-loaded="true"] video {
+    display: block;
     z-index: 2;
+    object-fit: cover;
   }
 {%- endstyle -%}
 
