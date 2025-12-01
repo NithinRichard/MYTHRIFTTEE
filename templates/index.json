@@ -256,6 +256,23 @@
         "padding-block-end": 48
       }
     },
+    "video_Vm3i8R": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "heading": "THE STORY",
+        "heading_size": "h2",
+        "enable_video_looping": true,
+        "video": "shopify://files/videos/IMG_4163 (online-video-cutter.com).mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify://shop_images/Untitled_design_1.png",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "section_MW79Nm": {
       "type": "section",
       "blocks": {
@@ -626,6 +643,7 @@
   "order": [
     "hero_banner",
     "product_list_fa6P9H",
+    "video_Vm3i8R",
     "section_MW79Nm",
     "1761643241f92dbed6",
     "176180697594962b64"
