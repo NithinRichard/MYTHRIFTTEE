@@ -27,7 +27,6 @@
     const loader = wishlistGrid.querySelector('.wishlist-loader');
     const emptyMsg = wishlistGrid.querySelector('.wishlist-empty-msg');
     
-    // Read directly from LocalStorage to avoid race conditions with wishlist.js initialization
     const getWishlistItems = () => {
       try {
         const items = localStorage.getItem('shopify-wishlist');
@@ -74,7 +73,6 @@
       }
     });
 
-    // Re-initialize wishlist buttons in the newly added cards
     if (window.wishlist) {
       window.wishlist.updateButtons();
     }

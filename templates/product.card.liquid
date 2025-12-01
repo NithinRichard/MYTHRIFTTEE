@@ -11,11 +11,8 @@
   </div>
   <div class="product-card__info">
     <a href="{{ product.url }}" class="contents user-select-text" style="text-decoration: none; color: inherit;">
-      <p class="h4" style="margin: 0 0 0.5rem 0;">{{ product.selected_or_first_available_variant.sku | default: product.title }}</p>
+      <h4 class="h4" style="margin: 0 0 0.5rem 0; font-family: 'Yeezy TStar', monospace !important;">{{ product.selected_or_first_available_variant.sku | default: product.title }}</h4>
     </a>
-    <div class="product-card__price">
-      {% render 'price', product_resource: product, show_sale_price_first: true %}
-    </div>
   </div>
 {% endcapture %}
 

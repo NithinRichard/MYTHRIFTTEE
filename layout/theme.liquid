@@ -80,6 +80,40 @@
   {% render 'yeezy-cursor' %}
   {% render 'lenis-scroll' %}
 
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const updateWishlistCount = (count) => {
+          const wishlistLinks = document.querySelectorAll('a[href="/pages/wishlist"]');
+          wishlistLinks.forEach(link => {
+            // Check if we've already saved the original text
+            if (!link.dataset.originalText) {
+              link.dataset.originalText = link.textContent.trim();
+            }
+            
+            if (count > 0) {
+              link.textContent = `${link.dataset.originalText} (${count})`;
+            } else {
+              link.textContent = link.dataset.originalText;
+            }
+          });
+        };
 
-</body>
+        // Listen for updates
+        document.addEventListener('wishlist:updated', (e) => {
+          updateWishlistCount(e.detail.items.length);
+        });
+
+        // Initial check
+        const savedWishlist = localStorage.getItem('shopify-wishlist');
+        if (savedWishlist) {
+          try {
+            const items = JSON.parse(savedWishlist);
+            updateWishlistCount(items.length);
+          } catch (e) {
+            console.error('Error parsing wishlist for count:', e);
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
