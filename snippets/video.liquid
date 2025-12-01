@@ -92,13 +92,8 @@
   {% endcapture %}
 {% else %}
   {% liquid
-    if disable_controls
-      assign controls = false
-      assign enable_js_api = true
-    else
-      assign controls = true
-      assign enable_js_api = false
-    endif
+    assign controls = true
+    assign enable_js_api = false
   %}
 
   {% capture video_tag %}
