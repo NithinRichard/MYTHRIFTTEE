@@ -77,7 +77,7 @@
     const bar = document.getElementById('preloader-bar');
     const hasSeenPreloader = sessionStorage.getItem('hasSeenPreloader');
 
-    if (hasSeenPreloader) {
+    if (hasSeenPreloader || window.location.pathname.includes('/pages/wishlist')) {
       preloader.style.display = 'none';
       return;
     }

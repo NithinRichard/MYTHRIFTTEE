@@ -7,30 +7,46 @@ class Wishlist {
     }
 
     getWishlist() {
-        const wishlist = localStorage.getItem(this.LOCAL_STORAGE_KEY);
-        return wishlist ? JSON.parse(wishlist) : [];
+        try {
+            const wishlist = localStorage.getItem(this.LOCAL_STORAGE_KEY);
+            return wishlist ? JSON.parse(wishlist) : [];
+        } catch (e) {
+            console.error('Error reading wishlist:', e);
+            return [];
+        }
     }
 
     saveWishlist(items) {
-        localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(items));
-        this.items = items;
-        this.updateButtons();
+        try {
+            localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(items));
+            this.items = items;
+            this.updateButtons();
 
-        // Dispatch event for other components to listen to
-        document.dispatchEvent(new CustomEvent('wishlist:updated', {
-            detail: { items: this.items }
-        }));
+            // Dispatch event for other components to listen to
+            document.dispatchEvent(new CustomEvent('wishlist:updated', {
+                detail: { items: this.items }
+            }));
+            console.log('Wishlist saved:', items);
+        } catch (e) {
+            console.error('Error saving wishlist:', e);
+        }
     }
 
     toggleItem(handle) {
         if (this.items.includes(handle)) {
+            console.log('Removing from wishlist:', handle);
             this.removeItem(handle);
         } else {
+            console.log('Adding to wishlist:', handle);
             this.addItem(handle);
         }
     }
 
     addItem(handle) {
+        if (!handle) {
+            console.error('Cannot add empty handle to wishlist');
+            return;
+        }
         if (!this.items.includes(handle)) {
             const newItems = [...this.items, handle];
             this.saveWishlist(newItems);

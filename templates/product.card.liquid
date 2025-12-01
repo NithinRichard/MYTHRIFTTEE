@@ -1,0 +1,22 @@
+{% layout none %}
+{% capture children %}
+  <div class="product-card__image-wrapper">
+    <a href="{{ product.url }}" class="product-card__link">
+      {% if product.featured_media %}
+        {{ product.featured_media | image_url: width: 533 | image_tag: loading: 'lazy', class: 'product-card__image' }}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </a>
+  </div>
+  <div class="product-card__info">
+    <a href="{{ product.url }}" class="contents user-select-text" style="text-decoration: none; color: inherit;">
+      <p class="h4" style="margin: 0 0 0.5rem 0;">{{ product.selected_or_first_available_variant.sku | default: product.title }}</p>
+    </a>
+    <div class="product-card__price">
+      {% render 'price', product_resource: product, show_sale_price_first: true %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render 'product-card', product: product, children: children %}
