@@ -29,6 +29,7 @@ This file can be re-written at any time.
     {%- render 'stylesheets' -%}
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}
+    <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
     {%- render 'structured-data-breadcrumbs' -%}
@@ -51,6 +52,41 @@ This file can be re-written at any time.
     {{ content_for_layout }}
     
     <script src="{{ 'critical.js' | asset_url }}" type="module" async blocking="render"></script>
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const updateWishlistCount = (count) => {
+          const wishlistLinks = document.querySelectorAll('a[href="/pages/wishlist"]');
+          wishlistLinks.forEach(link => {
+            // Check if we've already saved the original text
+            if (!link.dataset.originalText) {
+              link.dataset.originalText = link.textContent.trim();
+            }
+            
+            if (count > 0) {
+              link.textContent = `${link.dataset.originalText} (${count})`;
+            } else {
+              link.textContent = link.dataset.originalText;
+            }
+          });
+        };
+
+        // Listen for updates
+        document.addEventListener('wishlist:updated', (e) => {
+          updateWishlistCount(e.detail.items.length);
+        });
+
+        // Initial check
+        const savedWishlist = localStorage.getItem('shopify-wishlist');
+        if (savedWishlist) {
+          try {
+            const items = JSON.parse(savedWishlist);
+            updateWishlistCount(items.length);
+          } catch (e) {
+            console.error('Error parsing wishlist for count:', e);
+          }
+        }
+      });
+    </script>
     <style type="text/css">
       body, html {
         width: 100% !important;
