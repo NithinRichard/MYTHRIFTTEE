@@ -50,7 +50,7 @@
       endif
 
       if video_autoplay
-        assign video_src = video_src | append: '&autoplay=1&mute=1'
+        assign video_src = video_src | append: '&autoplay=1&mute=1&playsinline=1'
       endif
 
       if video_loop
@@ -69,7 +69,7 @@
       endif
 
       if video_autoplay
-        assign video_src = video_src | append: '&autoplay=1&muted=1'
+        assign video_src = video_src | append: '&autoplay=1&muted=1&playsinline=1'
       endif
       if video_loop
         assign video_src = video_src | append: '&loop=1'
@@ -115,7 +115,7 @@
         | external_video_tag: data-video-type: 'vimeo'
       }}
     {% else %}
-      {{ video | video_tag: image_size: '2500x', autoplay: true, loop: video_loop, muted: true, controls: controls }}
+      {{ video | video_tag: image_size: '2500x', autoplay: true, loop: video_loop, muted: true, controls: controls, playsinline: true }}
     {% endif %}
   {% endcapture %}
 {% endif %}
