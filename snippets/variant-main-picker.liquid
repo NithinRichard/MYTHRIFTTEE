@@ -53,7 +53,7 @@
           endif
         -%}
 
-        {%- if variant_style == 'swatch' or block_settings.variant_style == 'buttons' -%}
+        {%- if variant_style == 'swatch' or block_settings.variant_style == 'buttons' or block_settings.variant_style == 'pills' -%}
           <fieldset
             class="variant-option variant-option--buttons{% if variant_style == 'swatch' %} variant-option--swatches{% else %} variant-option--{{ settings.variant_button_width }}{% endif %}"
             {{ option_id_attribute }}
@@ -63,6 +63,10 @@
               {%- if variant_style == 'swatch' -%}
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
+              {%- assign option_name_downcase = product_option.name | downcase -%}
+              {%- if option_name_downcase == 'size' -%}
+                <button type="button" class="size-guide-trigger" onclick="openSizeGuide()">Size Guide</button>
+              {%- endif -%}
             </legend>
             {%- for product_option_value in product_option.values -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}
@@ -134,7 +138,13 @@
           %}
 
           <div class="variant-option variant-option--dropdowns">
-            <label for="Option-{{ block.id }}-{{ forloop.index0 }}">{{ product_option.name | escape }}</label>
+            <label for="Option-{{ block.id }}-{{ forloop.index0 }}">
+              {{ product_option.name | escape }}
+              {%- assign option_name_downcase = product_option.name | downcase -%}
+              {%- if option_name_downcase == 'size' -%}
+                <button type="button" class="size-guide-trigger" onclick="openSizeGuide()">Size Guide</button>
+              {%- endif -%}
+            </label>
             <div
               class="variant-option__select-wrapper"
               style="
@@ -510,3 +520,5 @@
     justify-content: right;
   }
 {% endstylesheet %}
+
+{% render 'size-guide-modal' %}

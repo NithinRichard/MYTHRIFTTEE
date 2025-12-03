@@ -5061,3 +5061,105 @@ html {
     z-index: 2;
   }
 }
+
+/* Size Guide Modal */
+.size-guide-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.size-guide-modal[aria-hidden="false"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.size-guide-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.size-guide-content {
+  position: relative;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.size-guide-modal[aria-hidden="false"] .size-guide-content {
+  transform: translateY(0);
+}
+
+.size-guide-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: currentColor;
+}
+
+.size-guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-family: 'VCR OSD Mono', monospace;
+  /* Use the mono font for data */
+}
+
+.size-guide-table th,
+.size-guide-table td {
+  border: 1px solid var(--color-border);
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.size-guide-table th {
+  background: var(--color-foreground);
+  color: var(--color-background);
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.size-guide-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  margin-left: auto;
+  /* Push to right if in flex container */
+  font-family: 'Yeezy TStar', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.size-guide-trigger:hover {
+  opacity: 0.7;
+}
+
+.variant-option legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
