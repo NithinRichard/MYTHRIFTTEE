@@ -118,12 +118,6 @@
             "product_description": {
               "type": "product-description",
               "settings": {}
-            },
-            "measurements_block": {
-              "type": "product-measurements",
-              "settings": {
-                "heading": "Flat Lay Measurements"
-              }
             }
           },
           "block_order": [
@@ -131,8 +125,7 @@
             "price_a7krng",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
-            "product_description",
-            "measurements_block"
+            "product_description"
           ]
         }
       },
