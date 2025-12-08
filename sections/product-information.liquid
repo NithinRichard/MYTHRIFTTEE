@@ -297,6 +297,7 @@
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
       width: 100%;
+      align-items: start; /* Essential for sticky to work */
     }
     
     .product-information__grid.product-information--media-left {
@@ -314,6 +315,9 @@
       flex-direction: column;
       justify-content: center;
       min-height: 100vh;
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
     }
   }
 
