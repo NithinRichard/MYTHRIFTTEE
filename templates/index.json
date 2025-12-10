@@ -263,7 +263,7 @@
       "settings": {
         "collection": "elite-collection",
         "products_to_show": 12,
-        "layout_mode": "carousel",
+        "layout_mode": "masonry",
         "desktop_columns": 3,
         "bg_color": "#ffffff",
         "full_width": true,
