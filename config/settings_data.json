@@ -12,6 +12,17 @@
     "logo_height": 36,
     "logo_height_mobile": 28,
     "favicon": "shopify://shop_images/Untitled_design_1.png",
+<<<<<<< Updated upstream
+=======
+    "checkout_header_background_color": "#000000",
+    "checkout_body_background_color": "#000000",
+    "checkout_sidebar_background_color": "#000000",
+    "checkout_body_text_color": "#ffffff",
+    "checkout_heading_text_color": "#ffffff",
+    "checkout_accent_color": "#ffffff",
+    "checkout_button_color": "#ffffff",
+    "checkout_term_link_color": "#ffffff",
+>>>>>>> Stashed changes
     "type_body_font": "anonymous_pro_n4",
     "type_subheading_font": "anonymous_pro_n4",
     "type_heading_font": "anonymous_pro_n4",
