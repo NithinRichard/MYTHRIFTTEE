@@ -663,8 +663,8 @@
       ],
       "name": "Trust Badges",
       "settings": {
-        "bg_color": "#f8f8f8",
-        "text_color": "#1a1a1a",
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
         "padding_y": 60
       }
     }
