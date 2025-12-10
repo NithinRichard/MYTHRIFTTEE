@@ -627,6 +627,46 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "trust_badges_CbzMUf": {
+      "type": "trust-badges",
+      "blocks": {
+        "badge_BmJxm6": {
+          "type": "badge",
+          "settings": {
+            "icon": "shipping",
+            "heading": "Fast Shipping",
+            "text": "ALL INDIA DELIVERY"
+          }
+        },
+        "badge_P6rdgY": {
+          "type": "badge",
+          "settings": {
+            "icon": "security",
+            "heading": "Secure Checkout",
+            "text": "Encrypted Payment"
+          }
+        },
+        "badge_pKb8Aj": {
+          "type": "badge",
+          "settings": {
+            "icon": "authenticity",
+            "heading": "Authenticity",
+            "text": "Guaranteed Original"
+          }
+        }
+      },
+      "block_order": [
+        "badge_BmJxm6",
+        "badge_P6rdgY",
+        "badge_pKb8Aj"
+      ],
+      "name": "Trust Badges",
+      "settings": {
+        "bg_color": "#f8f8f8",
+        "text_color": "#1a1a1a",
+        "padding_y": 60
+      }
     }
   },
   "order": [
@@ -636,6 +676,7 @@
     "video_Vm3i8R",
     "section_MW79Nm",
     "1761643241f92dbed6",
-    "176180697594962b64"
+    "176180697594962b64",
+    "trust_badges_CbzMUf"
   ]
 }
