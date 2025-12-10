@@ -1,0 +1,260 @@
+{% schema %}
+{
+  "name": "Editorial Archive",
+  "tag": "section",
+  "class": "section-editorial-archive",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Archive Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 50,
+      "step": 1,
+      "default": 12,
+      "label": "Products to show"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout_mode",
+      "options": [
+        { "value": "masonry", "label": "Vertical Masonry (Grid)" },
+        { "value": "carousel", "label": "Horizontal Carousel" }
+      ],
+      "default": "masonry",
+      "label": "Layout Mode"
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "Desktop Columns (Masonry)"
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width",
+      "default": true
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "THE ARCHIVE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial Archive Grid"
+    }
+  ]
+}
+{% endschema %}
+
+{%- style -%}
+  .editorial-archive {
+    background-color: {{ section.settings.bg_color }};
+    padding: 4rem 1rem;
+  }
+  
+  .editorial-archive__heading {
+      font-family: 'Yeezy TStar', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 8rem;
+      line-height: 0.8;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+      text-align: center;
+      word-break: break-all;
+  }
+  
+  /* Masonry Layout */
+  .editorial-archive__masonry {
+    column-count: 2; /* Mobile default */
+    column-gap: 1rem;
+    max-width: {% if section.settings.full_width %}100%{% else %}1440px{% endif %};
+    margin: 0 auto;
+  }
+
+  .editorial-archive__masonry .card-archive {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+
+  /* Carousel Layout */
+  .editorial-archive__carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 2rem; /* Space for scrollbar or look */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .editorial-archive__carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .editorial-archive__carousel .card-archive {
+    flex: 0 0 80vw; /* Mobile width */
+    scroll-snap-align: center;
+    position: relative;
+  }
+  
+  /* Card Archive Styles */
+  .card-archive {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  
+  .card-archive__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .card-archive__image-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .card-archive__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.7s ease-in-out;
+  }
+  
+  .card-archive:hover .card-archive__image {
+    transform: scale(1.05);
+  }
+  
+  .card-archive__badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    text-transform: uppercase;
+    font-family: 'VCR_OSD_MONO', monospace;
+  }
+  
+  .card-archive__info {
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-archive__title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Yeezy TStar', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+  }
+  
+  .card-archive__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 0.25rem;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  
+  .card-archive:hover .card-archive__meta {
+    opacity: 1;
+  }
+  
+  .card-archive__price,
+  .card-archive__vendor {
+    font-size: 0.875rem;
+    font-family: 'VCR_OSD_MONO', monospace;
+  }
+  
+  .card-archive__vendor {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  @media screen and (min-width: 768px) {
+    .editorial-archive {
+        padding: 6rem 2rem;
+    }
+    .editorial-archive__heading {
+        font-size: 12rem;
+        margin-bottom: 4rem;
+    }
+
+    /* Desktop Masonry Columns */
+    .editorial-archive__masonry {
+      column-count: {{ section.settings.desktop_columns }};
+      column-gap: 2rem;
+    }
+    
+    .editorial-archive__masonry .card-archive {
+        margin-bottom: 3rem;
+    }
+
+    /* Desktop Carousel Items */
+    .editorial-archive__carousel .card-archive {
+      flex: 0 0 30vw; /* Desktop width */
+    }
+  }
+{%- endstyle -%}
+
+<div class="editorial-archive">
+  {% if section.settings.title != blank %}
+    <h2 class="editorial-archive__heading">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="editorial-archive__container">
+    {%- assign collection = section.settings.collection -%}
+    
+    {% if collection != blank %}
+      <div class="{% if section.settings.layout_mode == 'masonry' %}editorial-archive__masonry{% else %}editorial-archive__carousel{% endif %}">
+        {% for product in collection.products limit: section.settings.products_to_show %}
+            {% render 'card-archive', product: product %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-center py-20">
+        <p style="font-family: 'VCR_OSD_MONO', monospace;">Select a collection to view the archive.</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
