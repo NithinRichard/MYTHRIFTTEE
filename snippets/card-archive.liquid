@@ -10,7 +10,6 @@
   <a href="{{ product.url }}" class="card-archive__link">
     <div class="card-archive__image-wrapper">
       {% if product.featured_media %}
-        {% comment %} Use a high-quality image size for archive visuals {% endcomment %}
         {{
           product.featured_media
           | image_url: width: 800
@@ -22,6 +21,9 @@
       {% else %}
         {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
+      
+      {% comment %} Premium Vignette Overlay {% endcomment %}
+      <div class="card-archive__vignette"></div>
       
       {% comment %} Badge/Overlay for status {% endcomment %}
       {% unless product.available %}
