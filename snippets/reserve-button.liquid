@@ -1,0 +1,159 @@
+{% comment %}
+  Reserve Button Component for 1-of-1 Products
+  
+  @param {object} product - The product object
+  @param {object} variant - The product variant
+  @param {boolean} is_single_item - Whether this is a 1-of-1 item
+{% endcomment %}
+
+{% liquid
+  assign is_reserved = false
+  assign reserve_key = 'reserve_' | append: product.id
+%}
+
+<reserve-button-component
+  data-product-id="{{ product.id }}"
+  data-product-title="{{ product.title | escape }}"
+  data-variant-id="{{ variant.id }}"
+  data-reserve-key="{{ reserve_key }}"
+>
+  <button
+    type="button"
+    class="button button-reserve"
+    on:click="/showReserveModal"
+    ref="reserveButton"
+  >
+    <span class="reserve-button__icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15.5L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="reserve-button__text">Reserve This 1-of-1</span>
+  </button>
+
+  {% render 'reserve-modal', product: product, variant: variant %}
+</reserve-button-component>
+
+{% stylesheet %}
+  .button-reserve {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+
+  .button-reserve::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .button-reserve:hover::before {
+    left: 100%;
+  }
+
+  .button-reserve:hover {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .reserve-button__icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+  }
+
+  .reserve-button__text {
+    font-family: 'Yeezy TStar', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 749px) {
+    .reserve-button__text {
+      font-size: 0.875rem;
+    }
+  }
+{% endstylesheet %}
+
+<script type="module">
+  class ReserveButtonComponent extends HTMLElement {
+    constructor() {
+      super();
+      this.productId = this.dataset.productId;
+      this.productTitle = this.dataset.productTitle;
+      this.variantId = this.dataset.variantId;
+      this.reserveKey = this.dataset.reserveKey;
+    }
+
+    connectedCallback() {
+      this.checkReservationStatus();
+    }
+
+    checkReservationStatus() {
+      const reservation = localStorage.getItem(this.reserveKey);
+      if (reservation) {
+        const data = JSON.parse(reservation);
+        const now = Date.now();
+        
+        if (now < data.expiresAt) {
+          this.showReservedState(data.expiresAt);
+        } else {
+          localStorage.removeItem(this.reserveKey);
+        }
+      }
+    }
+
+    showReservedState(expiresAt) {
+      const button = this.querySelector('[ref="reserveButton"]');
+      button.disabled = true;
+      button.classList.add('is-reserved');
+      button.innerHTML = `
+        <span class="reserve-button__text">Reserved</span>
+        <span class="reserve-timer" data-expires="${expiresAt}"></span>
+      `;
+      this.startTimer(expiresAt);
+    }
+
+    startTimer(expiresAt) {
+      const timerEl = this.querySelector('.reserve-timer');
+      if (!timerEl) return;
+
+      const updateTimer = () => {
+        const now = Date.now();
+        const remaining = expiresAt - now;
+
+        if (remaining <= 0) {
+          localStorage.removeItem(this.reserveKey);
+          location.reload();
+          return;
+        }
+
+        const minutes = Math.floor(remaining / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+        timerEl.textContent = `(${minutes}:${seconds.toString().padStart(2, '0')})`;
+      };
+
+      updateTimer();
+      this.timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    disconnectedCallback() {
+      if (this.timerInterval) {
+        clearInterval(this.timerInterval);
+      }
+    }
+  }
+
+  customElements.define('reserve-button-component', ReserveButtonComponent);
+</script>

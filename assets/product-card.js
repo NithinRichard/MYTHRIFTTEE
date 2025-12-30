@@ -313,8 +313,6 @@ export class ProductCard extends Component {
    * @param {PointerEvent} event - The pointer event.
    */
   previewImage(event) {
-    if (event.pointerType !== 'mouse') return;
-
     const { slideshow } = this.refs;
 
     if (!slideshow) return;
@@ -334,8 +332,6 @@ export class ProductCard extends Component {
    * @param {PointerEvent} event - The pointer event.
    */
   resetImage(event) {
-    if (event.pointerType !== 'mouse') return;
-
     const { slideshow } = this.refs;
 
     if (!this.variantPicker) {
