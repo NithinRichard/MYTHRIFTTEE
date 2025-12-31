@@ -12,14 +12,6 @@
     "logo_height": 36,
     "logo_height_mobile": 28,
     "favicon": "shopify://shop_images/Untitled_design_1.png",
-    "checkout_header_background_color": "#000000",
-    "checkout_body_background_color": "#000000",
-    "checkout_sidebar_background_color": "#000000",
-    "checkout_body_text_color": "#ffffff",
-    "checkout_heading_text_color": "#ffffff",
-    "checkout_accent_color": "#ffffff",
-    "checkout_button_color": "#ffffff",
-    "checkout_term_link_color": "#ffffff",
     "type_body_font": "anonymous_pro_n4",
     "type_subheading_font": "anonymous_pro_n4",
     "type_heading_font": "anonymous_pro_n4",
@@ -173,15 +165,14 @@
         "disabled": false,
         "settings": {}
       },
-      "6089946381803635929": {
-        "type": "shopify://apps/kwik-cod-checkout/blocks/app-embed/74f36c20-677c-4aa2-b179-1769aa61abaa",
+      "11502817661673146621": {
+        "type": "shopify://apps/releasit-cod-fee-otp-verify/blocks/app-embed/019a066b-bc34-792e-8460-8aae1d0bdf53",
         "disabled": false,
         "settings": {
-          "gkc_button_text": "Checkout Now",
-          "gkc_button_subtext": "",
-          "gkc_button_bg": "#000000",
-          "gkc_text_color": "#ffffff",
-          "gk_image": true
+          "button_color": "#000000",
+          "button_text_color": "#ffffff",
+          "modal_shadow": "0 10px 30px rgba(0, 0, 0, 0.15)",
+          "modal_border": "none"
         }
       }
     },
