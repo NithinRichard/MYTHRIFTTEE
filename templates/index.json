@@ -345,7 +345,7 @@
                 "text_CF7Kjf": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We offer a range of pre-loved and thrifted clothing and unique finds sourced with care.</p>",
+                    "text": "<p>We offer a curated blend of <strong>brand-new arrivals</strong> and <strong>hand-picked thrifted finds</strong>, each sourced with care to bring you a truly unique wardrobe.<br/><br/></p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
