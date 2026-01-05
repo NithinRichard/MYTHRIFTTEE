@@ -84,6 +84,52 @@
     <div class="cart__summary-item tax-note cart-primary-typography">
       {% render 'tax-info', has_discounts_enabled: settings.show_add_discount_code %}
     </div>
+
+    <div class="cart__alternative-phone cart-primary-typography">
+      <label for="alternative-phone" class="cart__total-label">{{ 'content.alternative_mobile_number' | t }}</label>
+      <input
+        type="tel"
+        id="alternative-phone"
+        name="attributes[Alternative Mobile Number]"
+        value="{{ cart.attributes['Alternative Mobile Number'] }}"
+        placeholder="e.g. +91 9876543210"
+        class="cart__alternative-phone-input"
+        form="cart-form"
+      >
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('alternative-phone');
+        if (!input) return;
+
+        let debounceTimer;
+        input.addEventListener('input', () => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            const value = input.value;
+            fetch(window.Shopify.routes.root + 'cart/update.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                attributes: {
+                  'Alternative Mobile Number': value
+                }
+              })
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log('Cart attribute updated:', data.attributes);
+            })
+            .catch(error => {
+              console.error('Error updating cart attribute:', error);
+            });
+          }, 500);
+        });
+      });
+    </script>
   </div>
 </div>
 
@@ -135,5 +181,30 @@
 
   .cart__installments {
     color: var(--color-foreground);
+  }
+
+  .cart__alternative-phone {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+    margin-block-start: var(--margin-md);
+    width: 100%;
+  }
+
+  .cart__alternative-phone-input {
+    color: var(--color-input-text);
+    background-color: var(--color-input-background);
+    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    padding: var(--padding-sm);
+    font-size: var(--cart-font-size--sm);
+    border-radius: var(--style-border-radius-inputs);
+    width: 100%;
+    transition: border-color var(--animation-speed) ease;
+  }
+
+  .cart__alternative-phone-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
   }
 {% endstylesheet %}

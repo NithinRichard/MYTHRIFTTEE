@@ -258,7 +258,8 @@
     "recipient_form_fields_visible": "Recipient form fields are now visible",
     "recipient_form_fields_hidden": "Recipient form fields are now hidden",
     "recipient_form_error": "There was an error with the form submission",
-    "product_custom_property_character_count": "{{ used_chars }}/{{ max_chars }} characters used"
+    "product_custom_property_character_count": "{{ used_chars }}/{{ max_chars }} characters used",
+    "alternative_mobile_number": "Alternative Mobile Number (Optional)"
   },
   "fields": {
     "separator": "to"
