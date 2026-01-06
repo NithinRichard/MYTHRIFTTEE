@@ -3,7 +3,7 @@
 {% assign button_collection = closest.collection | default: section.settings.collection %}
 {% assign button_url = button_collection.url %}
 
-{% if button_collection.products_count > section.settings.max_products %}
+{% if block.settings.always_show or button_collection.products_count > section.settings.max_products %}
   {% render 'button', link: button_url %}
 {% endif %}
 
@@ -15,6 +15,12 @@
     {
       "type": "paragraph",
       "content": "t:content.visible_if_collection_has_more_products"
+    },
+    {
+      "type": "checkbox",
+      "id": "always_show",
+      "label": "t:settings.always_show",
+      "default": false
     },
     {
       "type": "text",

@@ -147,25 +147,10 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "VIEW ALL",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
+            "product_list_text_YFtzcL"
           ]
         },
         "static-product-card": {
@@ -232,10 +217,28 @@
             "product_card_gallery_677WP3",
             "product_title_YXxMTj"
           ]
+        },
+        "product_list_button_MWeP9V": {
+          "type": "_product-list-button",
+          "name": "t:names.product_list_button",
+          "settings": {
+            "always_show": true,
+            "label": "VIEW ALL",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
         }
       },
       "custom_css": [],
       "name": "Featured collection",
+      "block_order": [
+        "product_list_button_MWeP9V"
+      ],
       "settings": {
         "collection": "frontpage",
         "layout_type": "grid",
@@ -249,25 +252,11 @@
         "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
+        "horizontal_alignment": "center",
         "gap": 0,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "editorial_archive_grid_pdnghc": {
-      "type": "editorial-archive-grid",
-      "custom_css": [],
-      "name": "Editorial Archive Grid",
-      "settings": {
-        "collection": "elite-collection",
-        "products_to_show": 12,
-        "layout_mode": "carousel",
-        "desktop_columns": 3,
-        "bg_color": "#ffffff",
-        "full_width": true,
-        "title": "THE ARCHIVE"
       }
     },
     "video_Vm3i8R": {
@@ -672,7 +661,6 @@
   "order": [
     "hero_banner",
     "product_list_fa6P9H",
-    "editorial_archive_grid_pdnghc",
     "video_Vm3i8R",
     "section_MW79Nm",
     "1761643241f92dbed6",

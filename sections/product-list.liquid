@@ -92,6 +92,9 @@
     },
     {
       "type": "_divider"
+    },
+    {
+      "type": "_product-list-button"
     }
   ],
   "disabled_on": {
@@ -885,3 +888,50 @@
   ]
 }
 {% endschema %}
+
+{% stylesheet %}
+  .section-resource-list__content {
+    margin-top: 2rem;
+  }
+
+  .section-resource-list__content .button-secondary {
+    font-family: 'VCR OSD Mono', monospace !important;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.9rem;
+    padding: 14px 40px;
+    border: 1px solid var(--color-foreground);
+    background: transparent;
+    color: var(--color-foreground);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 0; /* Boxy techwear look */
+  }
+
+  .section-resource-list__content .button-secondary:hover {
+    background: var(--color-foreground);
+    color: var(--color-background);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  .section-resource-list__content .button-secondary::after {
+    content: "→";
+    font-family: system-ui, sans-serif;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .section-resource-list__content .button-secondary:hover::after {
+    transform: translateX(6px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-resource-list__content .button-secondary {
+      padding: 12px 30px;
+      font-size: 0.8rem;
+    }
+  }
+{% endstylesheet %}

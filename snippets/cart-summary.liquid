@@ -87,47 +87,81 @@
 
     <div class="cart__alternative-phone cart-primary-typography">
       <label for="alternative-phone" class="cart__total-label">{{ 'content.alternative_mobile_number' | t }}</label>
-      <input
-        type="tel"
-        id="alternative-phone"
-        name="attributes[Alternative Mobile Number]"
-        value="{{ cart.attributes['Alternative Mobile Number'] }}"
-        placeholder="e.g. +91 9876543210"
-        class="cart__alternative-phone-input"
-        form="cart-form"
-      >
+      <div class="cart__alternative-phone-container">
+        <span class="cart__alternative-phone-prefix">+91</span>
+        <input
+          type="tel"
+          id="alternative-phone"
+          name="attributes[Alternative Mobile Number]"
+          value="{{ cart.attributes['Alternative Mobile Number'] }}"
+          placeholder="9876543210"
+          class="cart__alternative-phone-input"
+          form="cart-form"
+          maxlength="10"
+          pattern="[0-9]{10}"
+          inputmode="numeric"
+        >
+      </div>
+      <small id="alternative-phone-error" class="cart__alternative-phone-error hidden">Please enter exactly 10 digits.</small>
     </div>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('alternative-phone');
+        const error = document.getElementById('alternative-phone-error');
+        const checkoutBtn = document.getElementById('checkout');
         if (!input) return;
+
+        const validate = (value) => {
+          const isNumeric = /^\d*$/.test(value);
+          if (!isNumeric) {
+            input.value = value.replace(/\D/g, '');
+            return false;
+          }
+          if (value.length > 0 && value.length !== 10) {
+            error.classList.remove('hidden');
+            return false;
+          } else {
+            error.classList.add('hidden');
+            return true;
+          }
+        };
 
         let debounceTimer;
         input.addEventListener('input', () => {
+          const value = input.value;
+          validate(value);
+
           clearTimeout(debounceTimer);
           debounceTimer = setTimeout(() => {
-            const value = input.value;
-            fetch(window.Shopify.routes.root + 'cart/update.js', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                attributes: {
-                  'Alternative Mobile Number': value
-                }
+            if (value.length === 0 || value.length === 10) {
+              fetch(window.Shopify.routes.root + 'cart/update.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  attributes: {
+                    'Alternative Mobile Number': value ? '+91 ' + value : ''
+                  }
+                })
               })
-            })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Cart attribute updated:', data.attributes);
-            })
-            .catch(error => {
-              console.error('Error updating cart attribute:', error);
-            });
+              .then(response => response.json())
+              .catch(error => console.error('Error updating cart attribute:', error));
+            }
           }, 500);
         });
+
+        // Block checkout if invalid length
+        if (checkoutBtn) {
+          checkoutBtn.addEventListener('click', (e) => {
+            if (input.value.length > 0 && input.value.length !== 10) {
+              e.preventDefault();
+              error.classList.remove('hidden');
+              input.focus();
+            }
+          });
+        }
       });
     </script>
   </div>
@@ -193,18 +227,43 @@
 
   .cart__alternative-phone-input {
     color: var(--color-input-text);
-    background-color: var(--color-input-background);
-    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    background-color: transparent;
+    border: none;
     padding: var(--padding-sm);
     font-size: var(--cart-font-size--sm);
-    border-radius: var(--style-border-radius-inputs);
     width: 100%;
-    transition: border-color var(--animation-speed) ease;
+    outline: none;
   }
 
-  .cart__alternative-phone-input:focus {
-    outline: none;
+  .cart__alternative-phone-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-input-background);
+    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    border-radius: var(--style-border-radius-inputs);
+    transition: border-color var(--animation-speed) ease;
+    overflow: hidden;
+  }
+
+  .cart__alternative-phone-container:focus-within {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 1px var(--color-primary);
+  }
+
+  .cart__alternative-phone-prefix {
+    padding-inline-start: var(--padding-sm);
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-60));
+    font-size: var(--cart-font-size--sm);
+    user-select: none;
+  }
+
+  .cart__alternative-phone-error {
+    color: #ff0000;
+    font-size: var(--font-size--2xs);
+    margin-top: 4px;
+  }
+
+  .cart__alternative-phone-error.hidden {
+    display: none;
   }
 {% endstylesheet %}
