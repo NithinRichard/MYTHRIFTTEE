@@ -259,6 +259,20 @@
         "padding-block-end": 48
       }
     },
+    "editorial_archive_grid_pdnghc": {
+      "type": "editorial-archive-grid",
+      "custom_css": [],
+      "name": "Editorial Archive Grid",
+      "settings": {
+        "collection": "elite-collection",
+        "products_to_show": 12,
+        "layout_mode": "carousel",
+        "desktop_columns": 3,
+        "bg_color": "#ffffff",
+        "full_width": true,
+        "title": "THE ARCHIVE"
+      }
+    },
     "video_Vm3i8R": {
       "type": "video",
       "name": "Video",
@@ -661,6 +675,7 @@
   "order": [
     "hero_banner",
     "product_list_fa6P9H",
+    "editorial_archive_grid_pdnghc",
     "video_Vm3i8R",
     "section_MW79Nm",
     "1761643241f92dbed6",
